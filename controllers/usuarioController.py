@@ -42,11 +42,11 @@ def usuario_controller():
         elif request.method == "DELETE":
             try:
                 data = request.get_json()
-                delete_cliente_id = data['id']
-                delete_cliente = usuario.query.get(delete_cliente_id)
-                if delete_cliente is None:
+                delete_usuario_id = data['id']
+                delete_usuario = usuario.query.get(delete_usuario_id)
+                if delete_usuario is None:
                     return {'error': 'usuario nao encontrado'}, 404
-                db.session.delete(delete_cliente)
+                db.session.delete(delete_usuario)
                 db.session.commit()
                 return 'usuario deletado com sucesso', 200
             except Exception as e:
