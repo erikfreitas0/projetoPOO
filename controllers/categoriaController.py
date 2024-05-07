@@ -6,7 +6,7 @@ def categoriaController():
     if request.method == 'POST':
         try:
             data = request.get_json()
-            categoria = categoria(data['nome'])
+            categoria = categoria(data['id'])
             db.session.add(categoria)
             db.session.commit()
             return 'categoria inserida com sucesso', 200
