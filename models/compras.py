@@ -12,9 +12,9 @@ class compras(db.Model):
         }
 
     id = db.Column(db.Integer, primary_key=True)
-    valor = db.Column(db.Float(10,2))
-    data = db.Column(db.Date(100))
-    quantidade = db.Column(db.Int(100))
+    valor = db.Column(db.Float(100))
+    data = db.Column(db.Date())
+    quantidade = db.Column(db.Float(100))
 
 
     def __init__(self, valor, data, quantidade) -> None:

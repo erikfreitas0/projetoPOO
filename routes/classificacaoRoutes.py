@@ -1,4 +1,4 @@
 from controllers.classificacaoController import classificacaoController
 
-def cargos(app):
+def classificacao(app):
     app.route('/classificacao', methods=['POST', 'GET'])(classificacaoController)

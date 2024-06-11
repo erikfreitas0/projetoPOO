@@ -15,8 +15,8 @@ class produto(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     cor = db.Column(db.String(100))
     marca = db.Column(db.String(100))
-    tamanho = db.Column(db.Int(100))
-    preco = db.Column(db.Float(10,2))
+    tamanho = db.Column(db.Float(100))
+    preco = db.Column(db.Float(100))
 
 
     def __init__(self, cor, marca, tamanho, preco) -> None:
