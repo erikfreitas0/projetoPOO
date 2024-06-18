@@ -6,18 +6,16 @@ function App() {
 
 
 
-  const [user, setUser] = useState<User>({
+  const [categoria, setCategoria] = useState<Categoria>({
     nome: "",
-    email: "",
-    cargo_id: 0
+    descricao: "",
   })
 
-  function inserirUsuario(){
-    axios.post('http:localhost:300/usuarios', {
+  function inserirCategoria(){
+    axios.post('http:localhost:300/categoria', {
       body:{
-        nome: user.nome,
-        email: user.email,
-        cargo_id: user.cargo_id
+        nome: categoria.nome,
+        descricao: categoria.descricao,
       },
       header:{
         'Content-Type': 'Application/Json'
@@ -26,8 +24,8 @@ function App() {
   }
 
   useEffect(() => {
-    console.log(user.nome)
-  },[user.nome])
+    console.log(categoria.nome)
+  },[categoria.nome])
 
   return (
     <>
@@ -40,26 +38,19 @@ function App() {
       <input
       type="text"
       id='nome'
-      value={user.nome}
+      value={categoria.nome}
       placeholder="Nome"
-      onChange={(e) => setUser({...user, nome: e.target.value})}
+      onChange={(e) => setCategoria({...categoria, nome: e.target.value})}
        />
        <input
       type="text"
-      id='email'
-      value={user.email}
-      placeholder="Email"
-      onChange={(e) => setUser({...user, email: e.target.value})}
+      id='descricao'
+      value={categoria.descricao}
+      placeholder="Descrição"
+      onChange={(e) => setCategoria({...categoria, descricao: e.target.value})}
        />
-       <input
-      type="text"
-      id='cargo_id'
-      value={user.cargo_id}
-      placeholder="ID CARGO"
-      onChange={(e) => setUser({...user, cargo_id: parseInt(e.target.value)})}
-       />
-       <button style={{backgroundColor:'red'}} onClick={() => inserirUsuario()}>
-          Inserir Cliente
+       <button style={{backgroundColor:'red'}} onClick={() => inserirCategoria()}>
+          Inserir Categoria
        </button>
     </>
   )
