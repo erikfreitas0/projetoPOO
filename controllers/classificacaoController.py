@@ -6,8 +6,8 @@ def classificacao_Controller():
     if request.method == 'POST':
         try:
             data = request.get_json()
-            classificacao = classificacao(data['id'])
-            db.session.add(classificacao)
+            user = classificacao(data['id'])
+            db.session.add(user)
             db.session.commit()
             return 'classificacao inserida com sucesso', 200
         except Exception as e:

@@ -6,8 +6,8 @@ def categoria_Controller():
     if request.method == 'POST':
         try:
             data = request.get_json()
-            categoria = categoria(data['id'], data['descricao'])
-            db.session.add(categoria)
+            user = categoria(data['id'], data['descricao'])
+            db.session.add(user)
             db.session.commit()
             return 'categoria cadastrada com sucesso', 200
         except Exception as e:
