@@ -2,7 +2,7 @@ from flask import request
 from database.db import db
 from models.classificacao import classificacao
 
-def classificacaoController():
+def classificacao_Controller():
     if request.method == 'POST':
         try:
             data = request.get_json()

@@ -2,7 +2,7 @@ from flask import request
 from database.db import db
 from models.categoria import categoria
 
-def categoriaController():
+def categoria_Controller():
     if request.method == 'POST':
         try:
             data = request.get_json()
