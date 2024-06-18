@@ -36,7 +36,7 @@ function App() {
         flexDirection: 'column'
       }}></div>
       <input
-      type="text"
+      type="int"
       id='id'
       value={categoria.id}
       placeholder="id"
