@@ -7,14 +7,14 @@ function App() {
 
 
   const [categoria, setCategoria] = useState<Categoria>({
-    nome: "",
+    id: "",
     descricao: "",
   })
 
   function inserirCategoria(){
-    axios.post('http:localhost:300/categoria', {
+    axios.post('http:localhost:3000/categoria', {
       body:{
-        nome: categoria.nome,
+        id: categoria.id,
         descricao: categoria.descricao,
       },
       header:{
@@ -24,8 +24,8 @@ function App() {
   }
 
   useEffect(() => {
-    console.log(categoria.nome)
-  },[categoria.nome])
+    console.log(categoria.id)
+  },[categoria.id])
 
   return (
     <>
@@ -37,10 +37,10 @@ function App() {
       }}></div>
       <input
       type="text"
-      id='nome'
-      value={categoria.nome}
-      placeholder="Nome"
-      onChange={(e) => setCategoria({...categoria, nome: e.target.value})}
+      id='id'
+      value={categoria.id}
+      placeholder="id"
+      onChange={(e) => setCategoria({...categoria, id: e.target.value})}
        />
        <input
       type="text"
