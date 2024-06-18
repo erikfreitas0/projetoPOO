@@ -9,7 +9,7 @@ class produto(db.Model):
             'cor': self.cor,
             'marca': self.marca,
             'tamanho': self.tamanho,
-            'preco': self.preco
+            'preco': self.preco,
         }
 
     id = db.Column(db.Integer, primary_key=True)

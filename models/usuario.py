@@ -9,7 +9,7 @@ class usuario(db.Model):
             'nome': self.nome,
             'email': self.email,
             'login': self.login,
-            'senha': self.senha
+            'senha': self.senha,
         }
 
     id = db.Column(db.Integer, primary_key=True)

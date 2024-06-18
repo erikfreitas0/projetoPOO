@@ -8,7 +8,7 @@ class compras(db.Model):
         return{
             'valor': self.valor,
             'data': self.data,
-            'quantidade': self.quantidade
+            'quantidade': self.quantidade,
         }
 
     id = db.Column(db.Integer, primary_key=True)
