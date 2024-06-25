@@ -1,27 +1,39 @@
 import React, { useState } from 'react';
 import { TextInput, StyleSheet, Image, TouchableOpacity, Text, View } from 'react-native';
 import { AntDesign, EvilIcons  } from '@expo/vector-icons';
+import axios from 'axios';
+
 
 export default function Cadastro({ navigation }) {
   const [name, setName] = useState(null);
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
 
-  function postUsuario(){
-    try{
-      const userdocRef = collection(database, 'Usuario')
-      addDoc(userdocRef, {
-        nome: name,
-        login: username,
-        senha: password,
-      })
-      alert('usuario cadastrada')
-      navigation.navigate('Login')
+  function postData() {
+    if (name, username, password !== ''){
+      try{
+        axios.post('http://localhost:3000/usuario', 
+        {
+          nome: name,
+          login: username,
+          senha: password,
+        },
+        alert('Usuario cadastrado'),
+        setUsername(''),
+        setName(''),
+        setPassword(''),
+        navigation.navigate('Login')
+        );
+      } 
+        catch (e) {
+        console.log(e);
+        alert('Erro ao cadastrar')
+      }
     }
-    catch (e) {
-      alert((e))
+    else{
+      alert('Insira os dados nos campos')
     }
-  }
+}
 
   return (
     <View style={styles.container}>
@@ -66,7 +78,7 @@ export default function Cadastro({ navigation }) {
         </View>
       </View>
       <View>
-        <TouchableOpacity style={styles.botom} onPress={() => postUsuario()}>
+        <TouchableOpacity style={styles.botom} onPress={postData}>
           <Text style={styles.txtbotom}>Cadastrar</Text>
         </TouchableOpacity>
       </View>

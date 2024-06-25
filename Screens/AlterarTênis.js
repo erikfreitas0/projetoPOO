@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { TextInput, StyleSheet, Image, TouchableOpacity, Text, View, ScrollView, Alert, Modal, Pressable } from 'react-native';
 import { Feather ,FontAwesome, MaterialIcons, FontAwesome5, Ionicons } from '@expo/vector-icons';
+import axios from 'axios';
 
 export default function AlterarTênis({ navigation }) {
     const [marca, setMarca] = useState('');
@@ -8,6 +9,37 @@ export default function AlterarTênis({ navigation }) {
     const [cor, setCor] = useState('');
     const [preco, setPreco] = useState('');
     const [codigo, setCodigo] = useState('');
+
+    function putData() {
+        if (codigo, marca, tamanho, cor, preco !== ''){
+          try{
+            axios.put('http://localhost:3000/produto', 
+            {
+              codigo: codigo,  
+              marca: marca,
+              tamanho: tamanho,
+              cor: cor,
+              preco: preco,
+            },
+            alert('Tenis alterado'),
+            setCodigo(''),
+            setMarca(''),
+            setTamanho(''),
+            setCor(''),
+            setPreco(''),
+    
+            navigation.navigate('Adm')
+            );
+          } 
+            catch (e) {
+            console.log(e);
+            alert('Erro ao alterar tenis')
+          }
+        }
+        else{
+          alert('Insira os dados nos campos')
+        }
+    }
 
     return (
         <View style={styles.container}>

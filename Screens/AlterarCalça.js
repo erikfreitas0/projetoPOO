@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { TextInput, StyleSheet, Image, TouchableOpacity, Text, View, ScrollView, Alert, Modal, Pressable } from 'react-native';
 import { Feather ,FontAwesome, MaterialIcons, FontAwesome5, Ionicons } from '@expo/vector-icons';
+import axios from 'axios';
 
 export default function AlterarCalça({ navigation }) {
     const [marca, setMarca] = useState('');
@@ -8,6 +9,37 @@ export default function AlterarCalça({ navigation }) {
     const [cor, setCor] = useState('');
     const [preco, setPreco] = useState('');
     const [codigo, setCodigo] = useState('');
+
+    function putData() {
+        if (codigo, marca, tamanho, cor, preco !== ''){
+          try{
+            axios.put('http://localhost:3000/produto', 
+            {
+              codigo: codigo,  
+              marca: marca,
+              tamanho: tamanho,
+              cor: cor,
+              preco: preco,
+            },
+            alert('Calça alterado'),
+            setCodigo(''),
+            setMarca(''),
+            setTamanho(''),
+            setCor(''),
+            setPreco(''),
+    
+            navigation.navigate('Adm')
+            );
+          } 
+            catch (e) {
+            console.log(e);
+            alert('Erro ao alterar calça')
+          }
+        }
+        else{
+          alert('Insira os dados nos campos')
+        }
+    }
 
     return (
         <View style={styles.container}>
@@ -63,7 +95,9 @@ export default function AlterarCalça({ navigation }) {
                     />
                 </View>
                 <View>
-                    <TouchableOpacity style={styles.botom} >
+                    <TouchableOpacity style={styles.botom} 
+                        onPress={putData}
+                    >
                         <Text style={styles.txtbotom}>Alterar</Text>
                     </TouchableOpacity>
                 </View>

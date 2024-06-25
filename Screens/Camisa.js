@@ -5,6 +5,17 @@ import { CheckBox } from 'react-native-elements';
 const { width: screenWidth } = Dimensions.get('window');
 
 export default function Camisa({ navigation }) {
+
+    const [quantidade, setQuantidade] = useState(0);
+    const [valorTotal, setValorTotal] = useState(0);
+    const valor = 100;
+
+    function addCart() {
+        setQuantidade(prevQuantidade => prevQuantidade + 1);
+        setValorTotal(prevValorTotal => prevValorTotal + valor);
+    }
+
+
     const [currentIndexCamisa1, setCurrentIndexCamisa1] = useState(0);
     const [currentIndexCamisa2, setCurrentIndexCamisa2] = useState(0);
     const [currentIndexCamisa3, setCurrentIndexCamisa3] = useState(0);

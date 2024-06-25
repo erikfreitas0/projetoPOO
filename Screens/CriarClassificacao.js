@@ -1,39 +1,26 @@
 import React, { useState } from 'react';
 import { TextInput, StyleSheet, Image, TouchableOpacity, Text, View, ScrollView, Alert, Modal, Pressable } from 'react-native';
-import { Feather ,FontAwesome, MaterialIcons, FontAwesome5, Ionicons } from '@expo/vector-icons';
+import { FontAwesome, MaterialIcons, FontAwesome5, Ionicons } from '@expo/vector-icons';
 import axios from 'axios';
 
-export default function AlterarCamisa({ navigation }) {
-    const [marca, setMarca] = useState('');
-    const [tamanho, setTamanho] = useState('');
-    const [cor, setCor] = useState('');
-    const [preco, setPreco] = useState('');
-    const [codigo, setCodigo] = useState('');
+export default function CriarClassificacao({ navigation }) {
+    const [tipo, setTipo] = useState('');
 
-    function putData() {
-        if (codigo, marca, tamanho, cor, preco !== ''){
+    function postData() {
+        if (tipo !== ''){
           try{
-            axios.put('http://localhost:3000/produto', 
+            axios.post('http://localhost:3000/classificacao', 
             {
-              codigo: codigo,  
-              marca: marca,
-              tamanho: tamanho,
-              cor: cor,
-              preco: preco,
+              tipo: tipo,
             },
-            alert('Camisa alterado'),
-            setCodigo(''),
-            setMarca(''),
-            setTamanho(''),
-            setCor(''),
-            setPreco(''),
-    
+            alert('Classificação cadastrada'),
+            setTipo(''),
             navigation.navigate('Adm')
             );
           } 
             catch (e) {
             console.log(e);
-            alert('Erro ao alterar camisa')
+            alert('Erro ao cadastrar')
           }
         }
         else{
@@ -44,61 +31,21 @@ export default function AlterarCamisa({ navigation }) {
     return (
         <View style={styles.container}>
             <View style={styles.geral}>
-            <View style={styles.inputContainer}>
-            <Feather name="code" size={24} color="black" />
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Código: "
-                        placeholderTextColor="gray"
-                        value={codigo}
-                        onChangeText={setCodigo}
-                    />
-                </View>
                 <View style={styles.inputContainer}>
                     <MaterialIcons name="branding-watermark" size={24} color="black" />
                     <TextInput
                         style={styles.input}
-                        placeholder="Marca: "
+                        placeholder="Tipo: "
                         placeholderTextColor="gray"
-                        value={marca}
-                        onChangeText={setMarca}
-                    />
-                </View>
-                <View style={styles.inputContainer}>
-                    <FontAwesome5 name="th-large" size={24} color="black" />
-                    <TextInput
-                        style={styles.input}
-                        placeholder="tamanho: "
-                        placeholderTextColor="gray"
-                        value={tamanho}
-                        onChangeText={setTamanho}
-                    />
-                </View>
-                <View style={styles.inputContainer}>
-                    <Ionicons name="color-fill-outline" size={24} color="black" />
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Cor: "
-                        placeholderTextColor="gray"
-                        value={cor}
-                        onChangeText={setCor}
-                    />
-                </View>
-                <View style={styles.inputContainer}>
-                    <MaterialIcons name="attach-money" size={24} color="black" />
-                    <TextInput
-                        style={styles.input}
-                        placeholder="preço : "
-                        placeholderTextColor="gray"
-                        value={preco}
-                        onChangeText={setPreco}
+                        value={tipo}
+                        onChangeText={setTipo}
                     />
                 </View>
                 <View>
                     <TouchableOpacity style={styles.botom} 
-                        onPress={putData}
+                        onPress={postData}
                     >
-                        <Text style={styles.txtbotom}>Alterar</Text>
+                        <Text style={styles.txtbotom}>Criar</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -116,7 +63,7 @@ const styles = StyleSheet.create({
         height: '100%',
     },
     geral: {
-        marginTop: 120,
+        marginTop: 100,
         width: 350,
         height: 500,
         marginLeft: 20,

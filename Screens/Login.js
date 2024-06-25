@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { TextInput, StyleSheet, Image, TouchableOpacity, Text, View } from 'react-native';
 import { AntDesign, EvilIcons } from '@expo/vector-icons';
+import axios from 'axios';
 
 export default function Login({ navigation }) {
 
@@ -10,20 +11,30 @@ export default function Login({ navigation }) {
 
 
   async function Submit() {
-    if (username === 'erik' && password === '1234') {
-      navigation.navigate('Home');
-      setUsername('');
-      setPassword('');
-    }
-    else if (username === 'adm' && password === 'adm') {
-      navigation.navigate('Adm');// entrada de adm
-      setUsername('');
-      setPassword('');
-    }
-    else {
-      alert('Dados inválidos');
-    }
+      /* const response = await axios.get('http://localhost:3000/usuario');
+      let userFound = false;
+      for (const usuario of response.data.usuarios) {
+        if (usuario.login === username && usuario.senha === password) {
+          userFound = true;
+          break;
+        } */
+        if (username === 'adm' && password === 'adm') {
+          navigation.navigate('Home');// entrada de adm
+          setUsername('');
+          setPassword('');
+        }
+        else {
+          alert('Dados inválidos');
+        }
+      
+      if (userFound) {
+        navigation.navigate('Home');
+        setUsername('');
+        setPassword('');
+      }
   }
+
+
   return (
     <View style={styles.container}>
       <View style={styles.img}>

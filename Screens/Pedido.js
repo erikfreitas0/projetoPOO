@@ -1,21 +1,29 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Text, TextInput, Image, TouchableOpacity } from 'react-native';
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
+import axios from 'axios';
 
 export default function Pedido({ navigation }) {
 
   const [pesquisa, setPesquisa] = useState([])
+  const [data, setData] = useState([]);
 
-  function PesquisaPedido() {
-    const PesquisaPedido = collection(database, 'Tasks')
-    const listen = onSnapshot(PesquisaPedido, (query) => {
-      const list = []
-      query.forEach((doc) => {
-        list.push({ ...doc.data(), id: doc.id })
-      })
-      setPesquisa(list)
-    })
-    return () => listen();
+  async function getData() {
+    try{
+      const response = await axios.get('http://localhost:3000/compras');
+      if (search !== ''){
+        const compras = response.data.compras.filter(compra => {
+                  return compra.codigo == search;
+                })
+        setData(compras)
+      }
+      else{
+        setData(response.data.compras);
+      }  
+      console.log(response.data)
+    } catch (e) {
+      console.log(e);
+    }
   }
 
 
@@ -64,10 +72,10 @@ export default function Pedido({ navigation }) {
           placeholderTextColor="gray"
           id='serach'
           value={pesquisa}
-          onChange={e => setSerach(e.target.value)}
+          onChangeText={setPesquisa}
         />
         <View style={styles.square1}>
-          <TouchableOpacity onPress={PesquisaPedido}>
+          <TouchableOpacity onPress={getData}>
             <Image
               style={styles.lupa}
               source={require('../ft/lupa.png')}
@@ -77,99 +85,33 @@ export default function Pedido({ navigation }) {
       </View>
 
       <ScrollView>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-        <Text>faz com que o pedido apareça aqui</Text>
-
-
+      <Text>
+            Pedidos
+          </Text>
+          {data.length <= 0 ? (
+            <Text>Pesquisando...</Text>
+          ) : (
+            data.map((compra) => {
+              return(
+                <View style={styles.valorcompra}>
+                  <View style={styles.valorcompracod}>
+                    <Text style={styles.valorcompracodtxt}>{compra.codigo}</Text>
+                  </View>
+                  <View style={styles.valorcompraprodtsegrd}>
+                    <Text style={styles.valorcompraprodtsegrdtxt}>{compra.valor}</Text>
+                  </View>
+                  <View style={styles.valor}>
+                    <Text style={styles.valortxt}>Data: {compra.data}</Text>
+                  </View>
+                  <View style={styles.valorcomprametdpendt}>
+                    <View style={styles.valorcomprametd}>
+                      <Text style={styles.valorcomprametdtxt}>Quantidade: {compra.quantidade}</Text>
+                    </View>
+                  </View>
+                </View>
+              );
+            })
+          )}
       </ScrollView>
     </View>
   );
@@ -264,5 +206,95 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: 'white',
+  },
+  valorcompra: {
+    margin: 20,
+    width: 320,
+    height: 190,
+    borderRadius: 15,
+    marginHorizontal: 5,
+    alignItems: "center",
+    backgroundColor: 'white', // Para garantir que a sombra seja visível
+    shadowColor: 'gray',  // Cor da sombra
+    shadowOffset: { width: 0, height: 4 },  // Deslocamento da sombra
+    shadowOpacity: 1.25,  // Opacidade da sombra
+    shadowRadius: 3.84,  // Raio da sombra
+    elevation: 5,  // Para Android, adiciona elevação
+  },
+  valorcompracod: {
+    width: '100%',
+    height: '10%',
+  },
+  valorcompracodtxt: {
+    margin: 5,
+    color: 'red',
+    marginLeft: 270,
+    fontSize: 10,
+  },
+  valorcompraprodtsegrd: {
+    width: '100%',
+    height: '15%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  valorcompraprodtsegrdtxt: {
+    fontSize: 20,
+  },
+  valor: {
+    width: '100%',
+    height: '15%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  valortxt: {
+    color: 'gray',
+    fontSize: 16,
+    fontStyle: 'italic',
+  },
+  valorcomprametdpendt: {
+    width: '100%',
+    height: '22.5%',
+    flexDirection: 'row',
+  },
+  valorcomprametd: {
+    width: '50%',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  valorcomprametdtxt: {
+    fontSize: 16,
+  },
+  valorcomprapendt: {
+    width: '50%',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  valorcomprapendttext: {
+    fontSize: 12,
+  },
+  valorcomprabancoendereco: {
+    width: '100%',
+    height: '22.5%',
+    flexDirection: 'row',
+  },
+  valorcomprabanco: {
+    width: '50%',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  valorcomprabancotxt: {
+    fontSize: 16,
+  },
+  valorcompraendereco: {
+    width: '50%',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  valorcompraenderecotxt: {
+    fontSize: 15,
   },
 });

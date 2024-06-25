@@ -1,12 +1,41 @@
 import React, { useState } from 'react';
 import { TextInput, StyleSheet, Image, TouchableOpacity, Text, View, ScrollView, Alert, Modal, Pressable } from 'react-native';
 import { FontAwesome, MaterialIcons, FontAwesome5, Ionicons } from '@expo/vector-icons';
+import axios from 'axios';
 
 export default function CriarCalça({ navigation }) {
     const [marca, setMarca] = useState('');
     const [tamanho, setTamanho] = useState('');
     const [cor, setCor] = useState('');
     const [preco, setPreco] = useState('');
+
+    function postData() {
+        if (marca, tamanho, cor, preco !== ''){
+          try{
+            axios.post('http://localhost:3000/produto', 
+            {
+              cor: cor,
+              marca: marca,
+              tamanho: tamanho,
+              preco: preco,
+            },
+            alert('Usuario cadastrado'),
+            setMarca(''),
+            setTamanho(''),
+            setCor(''),
+            setPreco(''),
+            navigation.navigate('Adm')
+            );
+          } 
+            catch (e) {
+            console.log(e);
+            alert('Erro ao cadastrar')
+          }
+        }
+        else{
+          alert('Insira os dados nos campos')
+        }
+    }
 
     return (
         <View style={styles.container}>
@@ -52,7 +81,9 @@ export default function CriarCalça({ navigation }) {
                     />
                 </View>
                 <View>
-                    <TouchableOpacity style={styles.botom} >
+                    <TouchableOpacity style={styles.botom}
+                        onPress={postData}
+                    >
                         <Text style={styles.txtbotom}>Criar</Text>
                     </TouchableOpacity>
                 </View>

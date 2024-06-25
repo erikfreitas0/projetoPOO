@@ -25,8 +25,13 @@ export default function Adm({ navigation }) {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.view}>
-                <TouchableOpacity style={styles.botom} onPress={() => navigation.navigate('Marca')}>
-                        <Text style={styles.txt}>Marca</Text>
+                <TouchableOpacity style={styles.botom} onPress={() => navigation.navigate('Classificacao')}>
+                        <Text style={styles.txt}>Classificacao</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.view}>
+                <TouchableOpacity style={styles.botom} onPress={() => navigation.navigate('Categoria')}>
+                        <Text style={styles.txt}>Categoria</Text>
                     </TouchableOpacity>
                 </View>
             </View>
