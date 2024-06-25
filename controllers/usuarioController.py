@@ -7,7 +7,7 @@ def usuario_controller():
             try:
                 data = request.get_json()
                 print(data)
-                user = usuario(data['nome'], data['email'], data['login'], data['senha'])
+                user = usuario(data['nome'], data['login'], data['senha'])
                 db.session.add(user)
                 db.session.commit()
                 return 'Usuário criado com sucesso', 200
