@@ -1,20 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { View, StyleSheet, Text, Image, TouchableOpacity, Dimensions, Animated, ScrollView } from 'react-native';
 import { CheckBox } from 'react-native-elements';
+import { useCart } from './Screens/CartContext';
+
+const { quantidade, valor, addCart } = useCart();
 
 const { width: screenWidth } = Dimensions.get('window');
 
 export default function Camisa({ navigation }) {
-
-    const [quantidade, setQuantidade] = useState(0);
-    const [valorTotal, setValorTotal] = useState(0);
-    const valor = 100;
-
-    function addCart() {
-        setQuantidade(prevQuantidade => prevQuantidade + 1);
-        setValorTotal(prevValorTotal => prevValorTotal + valor);
-    }
-
 
     const [currentIndexCamisa1, setCurrentIndexCamisa1] = useState(0);
     const [currentIndexCamisa2, setCurrentIndexCamisa2] = useState(0);
@@ -158,7 +151,7 @@ export default function Camisa({ navigation }) {
                             </View>
                         ))}
                     </View>
-                    <TouchableOpacity style={styles.Button} onPress={() => alert('Adicionado ao carrinho')}>
+                    <TouchableOpacity style={styles.Button} onPress={addCart}>
                         <Text style={styles.ButtonText}>Adicionar ao Carrinho</Text>
                     </TouchableOpacity>
                     <View style={styles.camisas}>
@@ -183,7 +176,7 @@ export default function Camisa({ navigation }) {
                             </View>
                         ))}
                     </View>
-                    <TouchableOpacity style={styles.Button} onPress={() => alert('Adicionado ao carrinho')}>
+                    <TouchableOpacity style={styles.Button} onPress={addCart}>
                         <Text style={styles.ButtonText}>Adicionar ao Carrinho</Text>
                     </TouchableOpacity>
                     <View style={styles.camisas}>
@@ -208,7 +201,7 @@ export default function Camisa({ navigation }) {
                             </View>
                         ))}
                     </View>
-                    <TouchableOpacity style={styles.Button} onPress={() => alert('Adicionado ao carrinho')}>
+                    <TouchableOpacity style={styles.Button} onPress={addCart}>
                         <Text style={styles.ButtonText}>Adicionar ao Carrinho</Text>
                     </TouchableOpacity>
                 </View>

@@ -1,11 +1,19 @@
 import React from 'react';
 import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect, useRef, useContext } from 'react';
+import { useCart } from './Screens/CartContext';
+
+const { quantidade, valor, addCart } = useCart();
 
 export default function Carrinho({ navigation }) {
   return (
     <View style={styles.container}>
-      
+      <View style={styles.carrinhoInfo}>
+        <Text style={styles.carrinhoTexto}>Quantidade: {quantidade}</Text>
+        <Text style={styles.carrinhoTexto}>Valor Total: R${quantidade * valor}</Text>
+      </View>
     </View>
+
   );
 }
 
@@ -134,5 +142,23 @@ const styles = StyleSheet.create({
   destaqueBotaoTexto: {
     color: 'white',
     fontSize: 14,
+  },
+  carrinhoInfo: {
+    marginBottom: 20,
+  },
+  carrinhoTexto: {
+    color: 'white',
+    fontSize: 18,
+    marginBottom: 10,
+  },
+  botao: {
+    backgroundColor: '#5e636b',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+  },
+  botaoTexto: {
+    color: 'white',
+    fontSize: 16,
   },
 });

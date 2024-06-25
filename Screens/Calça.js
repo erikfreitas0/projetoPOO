@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { View, StyleSheet, Text, Image, TouchableOpacity, Dimensions, Animated, ScrollView } from 'react-native';
 import { CheckBox } from 'react-native-elements';
+import { useCart } from './Screens/CartContext';
+
+const { quantidade, valor, addCart } = useCart();
 
 const { width: screenWidth } = Dimensions.get('window');
 
