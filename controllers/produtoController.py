@@ -17,10 +17,10 @@ def produto_controller():
         elif request.method == 'GET':
             try:
                 data = produto.query.all()
-                return render_template('produto.html', data={'produto': [produto.to_dict() for produto in data]})
-            
+                teste = {'produtos': [produto.to_dict() for produto in data]}
+                return teste
             except Exception as e:
-                return 'Nao foi possivel buscar produtos', 405
+                return 'Não foi possível buscar produtos. Error: {}'.format(str(e)), 405
             
         elif request.method == "PUT":
             try:

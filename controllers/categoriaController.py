@@ -14,8 +14,8 @@ def categoria_Controller():
             return 'error: erro ao inserir categoria. Erro: {}'.format(str(e)), 400
     elif request.method == 'GET':
         try:
-            data = categoria.query.all()
-            new = {'categoria': [categoria.to_dict() for categoria in data]}
-            return new, 200
+                data = categoria.query.all()
+                teste = {'categorias': [categoria.to_dict() for categoria in data]}
+                return teste
         except Exception as e:
-            return 'error: erro ao buscar categoria. Erro: {}'.format(str(e)), 400
+                return 'Não foi possível buscar categorias. Error: {}'.format(str(e)), 405

@@ -17,10 +17,10 @@ def compras_controller():
         elif request.method == 'GET':
             try:
                 data = compras.query.all()
-                return render_template('compras.html', data={'compras': [compras.to_dict() for compras in data]})
-            
+                teste = {'compras': [compras.to_dict() for compras in data]}
+                return teste
             except Exception as e:
-                return 'Nao foi possivel buscar usuarios', 405
+                return 'Não foi possível buscar compras. Error: {}'.format(str(e)), 405
             
         elif request.method == "PUT":
             try:

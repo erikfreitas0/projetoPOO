@@ -14,8 +14,8 @@ def classificacao_Controller():
             return 'error: erro ao inserir classificacao. Erro:'.format(str(e)), 400
     elif request.method == 'GET':
         try:
-            data = classificacao.query.all()
-            new = {'classificacao': [classificacao.to_dict() for classificacao in data]}
-            return new, 200
+                data = classificacao.query.all()
+                teste = {'classificacoes': [classificacao.to_dict() for classificacao in data]}
+                return teste
         except Exception as e:
-            return 'error: erro ao buscar classificacao. Erro:'.format(str(e)), 400
+                return 'Não foi possível buscar classificacoess. Error: {}'.format(str(e)), 405
