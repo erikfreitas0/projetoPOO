@@ -11,15 +11,13 @@ export default function Login({ navigation }) {
 
 
   async function Submit() {
-      /* const response = await axios.get('http://localhost:3000/usuario');
-      let userFound = false;
-      for (const usuario of response.data.usuarios) {
-        if (usuario.login === username && usuario.senha === password) {
-          userFound = true;
-          break;
-        } */
-        if (username === 'adm' && password === 'adm') {
-          navigation.navigate('Home');// entrada de adm
+    if (username === 'erik' && password === '1234') {
+      navigation.navigate('Home');// entrada de adm
+      setUsername('');
+      setPassword('');
+    }
+        else if (username === 'adm' && password === 'adm') {
+          navigation.navigate('Adm');// entrada de adm
           setUsername('');
           setPassword('');
         }
@@ -33,6 +31,7 @@ export default function Login({ navigation }) {
         setPassword('');
       }
   }
+  
 
 
   return (

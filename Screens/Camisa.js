@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { View, StyleSheet, Text, Image, TouchableOpacity, Dimensions, Animated, ScrollView } from 'react-native';
 import { CheckBox } from 'react-native-elements';
-import { useCart } from './Screens/CartContext';
-
-const { quantidade, valor, addCart } = useCart();
+import { useCart } from './CartContext';
 
 const { width: screenWidth } = Dimensions.get('window');
 
 export default function Camisa({ navigation }) {
+
+    const { quantidade, valor, addCart } = useCart();
 
     const [currentIndexCamisa1, setCurrentIndexCamisa1] = useState(0);
     const [currentIndexCamisa2, setCurrentIndexCamisa2] = useState(0);

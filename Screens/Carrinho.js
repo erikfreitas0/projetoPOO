@@ -1,16 +1,16 @@
-import React from 'react';
 import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
 import React, { useState, useEffect, useRef, useContext } from 'react';
-import { useCart } from './Screens/CartContext';
+import { useCart } from './CartContext';
 
-const { quantidade, valor, addCart } = useCart();
+
 
 export default function Carrinho({ navigation }) {
+  const { quantidade, valor, addCart } = useCart();
+
   return (
     <View style={styles.container}>
       <View style={styles.carrinhoInfo}>
-        <Text style={styles.carrinhoTexto}>Quantidade: {quantidade}</Text>
-        <Text style={styles.carrinhoTexto}>Valor Total: R${quantidade * valor}</Text>
+       
       </View>
     </View>
 

@@ -1,13 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { View, StyleSheet, Text, Image, TouchableOpacity, Dimensions, Animated, ScrollView } from 'react-native';
 import { CheckBox } from 'react-native-elements';
-import { useCart } from './Screens/CartContext';
+import { useCart } from './CartContext';
 
-const { quantidade, valor, addCart } = useCart();
+
 
 const { width: screenWidth } = Dimensions.get('window');
 
 export default function Tênis({ navigation }) {
+
+    const { quantidade, valor, addCart } = useCart();
+
     const [currentIndexTenis1, setCurrentIndexTenis1] = useState(0);
     const [currentIndexTenis2, setCurrentIndexTenis2] = useState(0);
     const [currentIndexTenis3, setCurrentIndexTenis3] = useState(0);

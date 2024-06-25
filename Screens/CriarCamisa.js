@@ -19,7 +19,7 @@ export default function CriarCamisa({ navigation }) {
               tamanho: tamanho,
               preco: preco,
             },
-            alert('Usuario cadastrado'),
+            alert('cadastrado'),
             setMarca(''),
             setTamanho(''),
             setCor(''),

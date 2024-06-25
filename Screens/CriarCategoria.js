@@ -11,7 +11,7 @@ export default function CriarClassificacao({ navigation }) {
           try{
             axios.post('http://localhost:3000/categoria', 
             {
-              descricao: descricao,
+              descricao: descricao, 
             },
             alert('Descrição cadastrada'),
             setDescricao(''),

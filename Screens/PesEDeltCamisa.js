@@ -21,7 +21,6 @@ export default function PesEDeltCamisa({ navigation }) {
       else{
         setData(response.data.produtos);
       }  
-      console.log(response.data)
     } catch (e) {
       console.log(e);
     }

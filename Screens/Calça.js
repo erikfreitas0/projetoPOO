@@ -1,13 +1,15 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { View, StyleSheet, Text, Image, TouchableOpacity, Dimensions, Animated, ScrollView } from 'react-native';
 import { CheckBox } from 'react-native-elements';
-import { useCart } from './Screens/CartContext';
+import { useCart } from './CartContext';
 
-const { quantidade, valor, addCart } = useCart();
 
 const { width: screenWidth } = Dimensions.get('window');
 
 export default function Calça({ navigation }) {
+
+  const { quantidade, valor, addCart } = useCart();
+  
   const [currentIndexCalca1, setCurrentIndexCalca1] = useState(0);
   const [currentIndexCalca2, setCurrentIndexCalca2] = useState(0);
   const [currentIndexCalca3, setCurrentIndexCalca3] = useState(0);
