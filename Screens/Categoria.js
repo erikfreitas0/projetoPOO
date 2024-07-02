@@ -5,7 +5,7 @@ export default function Categoria({ navigation }) {
     return (
         <View style={styles.container}>
             <View style={styles.viewtext}>
-                <Text style={styles.text}>Classificacao</Text>
+                <Text style={styles.text}>Categoria</Text>
             </View>
             <View style={styles.escolhageral}>
             <View style={styles.view}>

@@ -51,7 +51,7 @@ export default function PesEDeltCLassificacao({ navigation }) {
       
         <ScrollView>
         <Text>
-            Caminhões
+            Classificações
           </Text>
           {data.length <= 0 ? (
             <Text>Pesquisando...</Text>

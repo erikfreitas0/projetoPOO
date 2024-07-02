@@ -42,12 +42,10 @@ export default function CriarClassificacao({ navigation }) {
                     />
                 </View>
                 <View>
-                    <TouchableOpacity style={styles.botom} 
-                        onPress={postData}
-                    >
-                        <Text style={styles.txtbotom}>Criar</Text>
-                    </TouchableOpacity>
-                </View>
+        <TouchableOpacity style={styles.botom} onPress={postData}>
+          <Text style={styles.txtbotom}>Cadastrar</Text>
+        </TouchableOpacity>
+      </View>
             </View>
             <View style={styles.fim}>
 

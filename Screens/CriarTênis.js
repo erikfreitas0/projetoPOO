@@ -19,7 +19,7 @@ export default function CriarTênis({ navigation }) {
               tamanho: tamanho,
               preco: preco,
             },
-            alert('Usuario cadastrado'),
+            alert('Tenis cadastrado'),
             setMarca(''),
             setTamanho(''),
             setCor(''),

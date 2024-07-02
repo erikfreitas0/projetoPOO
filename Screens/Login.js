@@ -10,6 +10,18 @@ export default function Login({ navigation }) {
 
 
 
+  // async function userFound(){
+  //   try{
+  //     const response = await axios.get('http://localhost:3000/usuario');
+  //     if (username === usuario.login && password === usuario.senha){
+  //       setData(usuario)
+  //     }
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // }
+
+
   async function Submit() {
     if (username === 'erik' && password === '1234') {
       navigation.navigate('Home');// entrada de adm
@@ -25,11 +37,11 @@ export default function Login({ navigation }) {
           alert('Dados inválidos');
         }
       
-      if (userFound) {
-        navigation.navigate('Home');
-        setUsername('');
-        setPassword('');
-      }
+      // if (userFound) {
+      //   navigation.navigate('Home');
+      //   setUsername('');
+      //   setPassword('');
+      // }
   }
   
 
