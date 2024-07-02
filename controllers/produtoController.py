@@ -12,7 +12,7 @@ def produto_controller():
                 db.session.commit()
                 return 'Produto cadastrado com sucesso', 200
             except Exception as e:
-                return 'O produto nao foi cadastrado', 405
+                return 'O produto nao foi cadastrado {}'.format(e), 405
             
         elif request.method == 'GET':
             try:

@@ -6,6 +6,7 @@ class produto(db.Model):
 
     def to_dict(self):
         return{
+            'codigo': self.codigo,
             'cor': self.cor,
             'marca': self.marca,
             'tamanho': self.tamanho,
