@@ -3,7 +3,7 @@ from database.db import db
 class categoria(db.Model):
     def to_dict(self):
         return{
-            'id': self.id,
+            'codigo': self.codigo,
             'descricao': self.descricao,
         }
     id = db.Column(db.Integer, primary_key=True)
