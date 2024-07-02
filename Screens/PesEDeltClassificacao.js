@@ -12,14 +12,15 @@ export default function PesEDeltCLassificacao({ navigation }) {
   async function getData() {
     try{
       const response = await axios.get('http://localhost:3000/classificacao');
-      if (search !== ''){
+      if (pesquisa !== ''){
         const classificacoes = response.data.classificacoes.filter(classificacao => {
-                  return classificacao.codigo == search;
+                  return classificacao.codigo == pesquisa;
                 })
         setData(classificacoes)
+        //setData(response.data.classificacoes);
       }
       else{
-        setData(response.data.classificacoes);
+        console.log("dfshgytytwe")
       }  
       console.log(response.data)
     } catch (e) {
@@ -56,14 +57,14 @@ export default function PesEDeltCLassificacao({ navigation }) {
           {data.length <= 0 ? (
             <Text>Pesquisando...</Text>
           ) : (
-            data.map((classificacao) => {
+            data.map((i) => {
               return(
-                <View style={styles.classificacao}>
+                <View style={styles.classificacao} key={i.codigo}>
                   <View style={styles.classificacaocod}>
-                    <Text style={styles.classificacaocodtxt}>{classificacao.codigo}</Text>
+                    <Text style={styles.classificacaocodtxt}>{i.codigo}</Text>
                   </View>
                   <View style={styles.classificacaotipo}>
-                    <Text style={styles.classificacaotipotxt}>{classificacao.tipo}</Text>
+                    <Text style={styles.classificacaotipotxt}>{i.tipo}</Text>
                   </View>
                 </View>
               );

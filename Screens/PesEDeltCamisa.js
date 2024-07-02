@@ -12,14 +12,14 @@ export default function PesEDeltCamisa({ navigation }) {
   async function getData() {
     try{
       const response = await axios.get('http://localhost:3000/produto');
-      if (search !== ''){
+      if (pesquisa !== ''){
         const produtos = response.data.produtos.filter(produto => {
-                  return produto.codigo == search;
+                  return produto.codigo == pesquisa;
                 })
         setData(produtos)
       }
       else{
-        setData(response.data.produtos);
+        console.log("dfshgytytwe")
       }  
     } catch (e) {
       console.log(e);
@@ -69,28 +69,28 @@ export default function PesEDeltCamisa({ navigation }) {
           {data.length <= 0 ? (
             <Text>Pesquisando...</Text>
           ) : (
-            data.map((produto) => {
+            data.map((i) => {
               return(
-                <View style={styles.valorproduto}>
+                <View style={styles.valorproduto} key={i.codigo}>
                   <View style={styles.valorprodutocod}>
-                    <Text style={styles.valorprodutocodtxt}>{produto.codigo}</Text>
+                    <Text style={styles.valorprodutocodtxt}>{i.codigo}</Text>
                   </View>
                   <View style={styles.valorprodutoprodtsegrd}>
-                    <Text style={styles.valorprodutoprodtsegrdtxt}>{produto.marca}</Text>
+                    <Text style={styles.valorprodutoprodtsegrdtxt}>{i.marca}</Text>
                   </View>
                   <View style={styles.valor}>
-                    <Text style={styles.valortxt}>Cor: {produto.cor}</Text>
+                    <Text style={styles.valortxt}>Cor: {i.cor}</Text>
                   </View>
                   <View style={styles.valorprodutometdpendt}>
                     <View style={styles.valorprodutometd}>
-                      <Text style={styles.valorprodutometdtxt}>Tamanho: {produto.tamanho}</Text>
+                      <Text style={styles.valorprodutometdtxt}>Tamanho: {i.tamanho}</Text>
                     </View>
                     <View style={styles.valorprodutopendt}>
-                      <Text style={styles.valorprodutopendttext}>Valor: {produto.preco}</Text>
+                      <Text style={styles.valorprodutopendttext}>Valor: {i.preco}</Text>
                     </View>
                   </View>
                   <TouchableOpacity
-                  onPress={() => deleteData(produto.codigo)}
+                  onPress={() => deleteData(i.codigo)}
                   >
                     <Feather name="trash-2" size={24} color="red" />
                   </TouchableOpacity>

@@ -9,17 +9,19 @@ export default function PesEDeltcategoria({ navigation }) {
   const [pesquisa, setPesquisa] = useState([]);
   const [data, setData] = useState([]);
 
+
+
   async function getData() {
     try{
       const response = await axios.get('http://localhost:3000/categoria');
-      if (search !== ''){
+      if (pesquisa !== ''){
         const categorias = response.data.categorias.filter(categoria => {
-                  return categoria.codigo == search;
+                  return categoria.codigo == pesquisa;
                 })
         setData(categorias)
       }
       else{
-        setData(response.data.categorias);
+        console.log("dfshgytytwe")
       }  
       console.log(response.data)
     } catch (e) {
@@ -56,14 +58,14 @@ export default function PesEDeltcategoria({ navigation }) {
           {data.length <= 0 ? (
             <Text>Pesquisando...</Text>
           ) : (
-            data.map((categoria) => {
+            data.map((i) => {
               return(
-                <View style={styles.categoria}>
+                <View style={styles.categoria} key={i.codigo}>
                   <View style={styles.categoriacod}>
-                    <Text style={styles.categoriacodtxt}>{categoria.codigo}</Text>
+                    <Text style={styles.categoriacodtxt}>{i.codigo}</Text>
                   </View>
                   <View style={styles.categoriatipo}>
-                    <Text style={styles.categoriatipotxt}>{categoria.tipo}</Text>
+                    <Text style={styles.categoriadescricaotxt}>{i.descricao}</Text>
                   </View>
                 </View>
               );
@@ -146,7 +148,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  categoriatipotxt: {
+  categoriadescricaotxt: {
     fontSize: 20,
   },
 });
