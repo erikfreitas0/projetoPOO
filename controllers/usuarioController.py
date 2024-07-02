@@ -12,7 +12,7 @@ def usuario_controller():
                 db.session.commit()
                 return 'Usuário criado com sucesso', 200
             except Exception as e:
-                return 'O usuário nao foi criado', 405
+                return 'O usuário nao foi criado'.format(str(e)), 405
             
         elif request.method == 'GET':
             try:
