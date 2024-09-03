@@ -13,7 +13,7 @@ class produto(db.Model):
             'preco': self.preco,
         }
 
-    id = db.Column(db.Integer, primary_key=True)
+    codigo = db.Column(db.Integer, primary_key=True)
     cor = db.Column(db.String(100))
     marca = db.Column(db.String(100))
     tamanho = db.Column(db.Float(100))

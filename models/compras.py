@@ -11,7 +11,7 @@ class compras(db.Model):
             'quantidade': self.quantidade,
         }
 
-    id = db.Column(db.Integer, primary_key=True)
+    codigo = db.Column(db.Integer, primary_key=True)
     valor = db.Column(db.Float(100))
     data = db.Column(db.Date())
     quantidade = db.Column(db.Float(100))

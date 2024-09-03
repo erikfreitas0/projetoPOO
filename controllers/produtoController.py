@@ -25,10 +25,10 @@ def produto_controller():
         elif request.method == "PUT":
             try:
                 data = request.get_json()
-                put_produto_id = data['id']
-                put_produto = produto.query.get(put_produto_id)
+                put_produto_codigo = data['codigo']
+                put_produto = produto.query.get(put_produto_codigo)
                 if put_produto is None:
-                    return {'error': 'produto nao encontrado'}, 404
+                    return {'error': 'produto nao encontrado. Erro {}'.format(e)}, 404
                 put_produto.cor = data.get('cor', put_produto.cor)
                 put_produto.marca = data.get('marca', put_produto.marca)
                 put_produto.tamanho = data.get('tamanho', put_produto.tamanho)
@@ -42,11 +42,11 @@ def produto_controller():
         elif request.method == "DELETE":
             try:
                 data = request.get_json()
-                delete_usuario_id = data['id']
-                delete_usuario = produto.query.get(delete_usuario_id)
-                if delete_usuario is None:
+                delete_produto_codigo = data['codigo']
+                delete_produto = produto.query.get(delete_produto_codigo)
+                if delete_produto is None:
                     return {'error': 'produto nao encontrado'}, 404
-                db.session.delete(delete_usuario)
+                db.session.delete(delete_produto)
                 db.session.commit()
                 return 'produto deletado com sucesso', 200
             except Exception as e:

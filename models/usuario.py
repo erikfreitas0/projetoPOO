@@ -11,7 +11,7 @@ class usuario(db.Model):
             'senha': self.senha,
         }
 
-    id = db.Column(db.Integer, primary_key=True)
+    codigo = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(100))
     login = db.Column(db.String(100))
     senha = db.Column(db.String(100))
